@@ -28,7 +28,7 @@ public class cuartoPunto {
 		arreglo = line.split(",");
 		int min = valorMin();
 		int max = valorMax();
-		System.out.println(max-min);
+		System.out.println("el maximo beneficio es: " + (max - min));
 	}
 	public static int valorMin() 
 	{

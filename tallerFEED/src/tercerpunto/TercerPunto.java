@@ -38,7 +38,7 @@ public class TercerPunto {
 					counter += 1;
 				}
 			}
-			if (counter == 1) //si el contador es igual a 1 lo guarda en le buffer po si otro valor tambien llega a ser 1
+			if (counter == 1) //si el contador es igual a 1 lo guarda en le buffer por si otro valor tambien llega a ser 1
 			{
 				buffer = arreglo[i];
 			}

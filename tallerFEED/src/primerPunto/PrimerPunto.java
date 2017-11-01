@@ -44,7 +44,7 @@ public class PrimerPunto {
 				}
 			}
 		}
-		System.out.println("el numero de parejas que cumplen las restriccion son: " + counter);
+		System.out.println("el numero de parejas que cumplen la restriccion son: " + counter);
 	}
 
 }
