@@ -7,7 +7,7 @@ package algoritmos_de_ordenamiento;
  * @author Alexis Holguin 
  *
  */
-public class MergeSort {
+public class sortingAlgorithms {
 	
 	/**
 	 * @param args
@@ -87,7 +87,7 @@ public class MergeSort {
 		{
 			return array;
 		}
-		int l = left, r = right;
+		int BufferLeft = left, BufferRight = right;
 		
 		if (left != right) 
 		{
@@ -97,7 +97,7 @@ public class MergeSort {
 			
 			while(left != right) 
 			{
-				while(array[right] >= array [pivot] && left < right) 
+				while(array[right] > array [pivot] && left < right) 
 				{ 
 					right--;
 					while (array[left] < array[pivot] && left < right) 
@@ -105,7 +105,7 @@ public class MergeSort {
 						left++;
 					}
 				}
-				
+				//change places to numbers
 				if (right != left) 
 				{
 					aux = array[right];
@@ -113,10 +113,11 @@ public class MergeSort {
 					array[left] = aux;
 				}
 			}
+			//recursion
 			if (left == right)
 			{
-				QuickSort2(array, l, left-1);
-				QuickSort2(array, left+1, r);
+				QuickSort2(array, BufferLeft, left-1);
+				QuickSort2(array, left+1, BufferRight);
 			}
 		}
 		return array;
