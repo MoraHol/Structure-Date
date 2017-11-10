@@ -73,15 +73,12 @@ public class sortingAlgorithms {
 		}
 		return array;
 	}
-	public void QuickSort(int [] array) 
+	
+	public static int[] QuickSort(int[] array) 
 	{
-		array = QuickSort1(array);
+		return QuickSort1(array, 0, array.length-1);
 	}
-	public static int[] QuickSort1(int[] array) 
-	{
-		return QuickSort2(array, 0, array.length-1);
-	}
-	public static int[] QuickSort2(int[] array, int left, int right) 
+	public static int[] QuickSort1(int[] array, int left, int right) 
 	{
 		if(left >= right) 
 		{
@@ -116,13 +113,29 @@ public class sortingAlgorithms {
 			//recursion
 			if (left == right)
 			{
-				QuickSort2(array, BufferLeft, left-1);
-				QuickSort2(array, left+1, BufferRight);
+				QuickSort1(array, BufferLeft, left-1);
+				QuickSort1(array, left+1, BufferRight);
 			}
 		}
 		return array;
 	}
-	
+	public static int[] InsertionSort(int[] array)
+	{
+        for (int i = 0; i < array.length; i++) //recorre el arreglo
+        {
+            for(int j = i ; j > 0 ; j--) //compara si los de atras son menores que i
+            {
+                if(array[j] < array[j-1]) // si i es menor al numero de atras intercambian pociciones
+                {
+                    int aux = array[j];
+                    array[j] = array[j-1];
+                    array[j-1] = aux;
+                }
+            }
+        }
+        return array;
+    }
 }
+
 	
 
