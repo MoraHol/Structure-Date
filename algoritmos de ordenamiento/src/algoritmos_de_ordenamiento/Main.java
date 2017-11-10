@@ -26,7 +26,7 @@ public class Main {
 			array1[i] = Integer.parseInt(array[i]);
 		}
 		sortingAlgorithms dr = new sortingAlgorithms();
-		array1=dr.InsertionSort(array1);
+		array1 = dr.InsertionSort1(array1);
 		for (int i = 0; i< array1.length;i++) {
 			if (i < array.length - 1)
 			{

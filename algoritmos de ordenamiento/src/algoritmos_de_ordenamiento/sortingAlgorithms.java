@@ -123,7 +123,7 @@ public class sortingAlgorithms {
 	{
         for (int i = 0; i < array.length; i++) //recorre el arreglo
         {
-            for(int j = i ; j > 0 ; j--) //compara si los de atras son menores que i
+            for(int j = i ; j >= 0 ; j--) //compara si los de atras son menores que i
             {
                 if(array[j] < array[j-1]) // si i es menor al numero de atras intercambian pociciones
                 {
@@ -135,6 +135,27 @@ public class sortingAlgorithms {
         }
         return array;
     }
+	public int[] InsertionSort1(int[] array)
+	{
+		int swap, i, j, counter = 0;
+		for ( i = 0; i < array.length; i++)
+		{
+			swap = array[i];
+			
+			for(j = i -1; j >= 0; j--)
+				if (array[i] < array[j])
+					break;
+				
+			
+			for(int k = i; k < j + 1; k--)
+				array[k] = array[k - 1];
+			
+				//counter +=1;
+			
+			array[j + 1] = swap;
+		}
+		return array;
+	}
 }
 
 	
