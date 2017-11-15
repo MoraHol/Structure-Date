@@ -33,7 +33,14 @@ public class sortingAlgorithms {
 			{
 				arrayRight[i-nLeft] = array[i];
 			}
-		
+			for(int l=0;l<arrayLeft.length;l++) {
+				System.out.println(arrayLeft[l]+",");
+			}
+			System.out.println("\n");
+			for(int l=0;l<arrayLeft.length;l++) {
+				System.out.println(arrayRight[l]+",");
+			}
+			
 			//Recursion
 			arrayLeft = mergeSort(arrayLeft);
 			arrayRight = mergeSort(arrayRight);
@@ -76,47 +83,47 @@ public class sortingAlgorithms {
 	
 	public static int[] QuickSort(int[] array) 
 	{
-		return QuickSort1(array, 0, array.length-1);
+		return quicksort(array, 0, array.length-1);
 	}
-	public static int[] QuickSort1(int[] array, int left, int right) 
+	public static int [] quicksort (int[] array,int i, int j) 
 	{
-		if(left >= right) 
+		int pivot = i;
+		int Bufferi = i;
+		int Bufferj = j;
+		int temp;
+		
+		if(i >= j) 
 		{
 			return array;
 		}
-		int BufferLeft = left, BufferRight = right;
-		
-		if (left != right) 
-		{
-			int pivot;
-			int aux;
-			pivot = left;
+		while(i != j) {
+			if(array[i] <= array[pivot] && i < j) {
+				i++;
+				System.out.println(i);
+			}
+			if(array[j] > array[pivot] && i < j) 
+			{
+				j--;
+				System.out.println(j);
+			}
+			temp = array[j];
+			array[j] = array[i];
+			array[i] = temp;
 			
-			while(left != right) 
-			{
-				while(array[right] > array [pivot] && left < right) 
-				{ 
-					right--;
-					while (array[left] < array[pivot] && left < right) 
-					{
-						left++;
-					}
-				}
-				//change places to numbers
-				if (right != left) 
-				{
-					aux = array[right];
-					array[right] = array [left];
-					array[left] = aux;
-				}
-			}
-			//recursion
-			if (left == right)
-			{
-				QuickSort1(array, BufferLeft, left-1);
-				QuickSort1(array, left+1, BufferRight);
-			}
 		}
+		
+		if (i == j) 
+		{
+			temp = array [i];
+			array[i] = array[Bufferi];
+			array[Bufferi] = temp;
+			
+			//recursion
+			quicksort(array, Bufferi, i - 1);
+			quicksort(array, i + 1, Bufferj);
+			
+		}
+		
 		return array;
 	}
 	public static int[] InsertionSort(int[] array)
@@ -137,7 +144,7 @@ public class sortingAlgorithms {
     }
 	public int[] InsertionSort1(int[] array)
 	{
-		int swap, i, j, counter = 0;
+		int swap, i, j;
 		for ( i = 0; i < array.length; i++)
 		{
 			swap = array[i];
@@ -150,12 +157,13 @@ public class sortingAlgorithms {
 			for(int k = i; k < j + 1; k--)
 				array[k] = array[k - 1];
 			
-				//counter +=1;
+				
 			
 			array[j + 1] = swap;
 		}
 		return array;
 	}
+	
 }
 
 	
