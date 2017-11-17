@@ -14,8 +14,7 @@ public class primerpunto {
 		int m= Integer.parseInt(br.readLine());
 		
 		int[][] matriz = new int[m][m];
-		int [][] matriz2 = new int[m][m];;
-		
+		int [][] matriz2 = new int[m][m];
 		
 		for(int i = 0; i < matriz.length ;i++) {
 			for(int j = 0; j < matriz.length;j++) {
@@ -28,9 +27,31 @@ public class primerpunto {
 			}
 			System.out.println();
 		}
+		int k;
+		
+		
+		if(m % 2 == 0)
+		{
+			matriz2 = RomboPar(matriz, m);
+			k = matriz.length /2;
+		}
+		else
+		{
+			matriz2 = RomboImpar(matriz, m); 
+			k = matriz.length /2 + 1;
+		}
+		int i,j;
+		
+		
+		System.out.println();
+		
+		MostrarMAtriz(matriz2);
+	}
+	public static int [][] RomboPar(int [][] matriz, int m){
 		int k = matriz.length /2 ;
 		int u = k-1,i,j;
 		
+		int[][] matriz2 = new int [m][m];
 		
 		for(i = 0;i < k;i++) {
 			for(j = u;j < k;j++) {
@@ -60,16 +81,53 @@ public class primerpunto {
 			}
 			u--;
 		}
+		return matriz2;
+	}
+	public static int [][] RomboImpar(int [][] matriz, int m){
+		int k = matriz.length /2 ;
+		int u = k-1,i,j;
 		
-		System.out.println();
-		for(i = 0; i < matriz.length ;i++) {
-			for( j = 0; j < matriz.length;j++) {
-				if(matriz2[i][j] == 0) 
+		int[][] matriz2 = new int [m][m];
+		
+		for(i = 0;i < k;i++) {
+			for(j = u+1;j < k;j++) {
+				matriz2[i][j] = matriz[i][j]; 
+			}
+			u--;
+		}	
+		
+		u=0;
+		for(i = k; i < matriz.length;i++) {
+			for(j = u; j < k;j++) {
+				matriz2[i][j] = matriz[i][j];  
+			}
+			u++;
+		}
+		u = k;
+		for(i = 0; i < k;i++) {
+			for(j = k; j <= u;j++) {
+				matriz2[i][j] = matriz[i][j];  
+			}
+			u++;
+		}
+		u = matriz.length;
+		for(i = k; i < matriz.length;i++) {
+			for(j = k; j < u;j++) {
+				matriz2[i][j] = matriz[i][j];  
+			}
+			u--;
+		}
+		return matriz2;
+	}
+	public static void MostrarMAtriz(int [][] matriz){
+		for(int i = 0; i < matriz.length ;i++) {
+			for( int j = 0; j < matriz.length;j++) {
+				if(matriz[i][j] == 0) 
 				{
 					System.out.print("  ");
 				}else 
 				{
-					System.out.print(matriz2[i][j] + " ");
+					System.out.print(matriz[i][j] + " ");
 				}
 			}
 			System.out.println();
@@ -77,3 +135,4 @@ public class primerpunto {
 	}
 	
 }
+
