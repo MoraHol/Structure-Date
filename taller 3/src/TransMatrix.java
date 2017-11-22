@@ -3,16 +3,16 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Random;
 
-public class cuartoPunto {
+public class TransMatrix {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader (new InputStreamReader (System.in));
-		Random rd = new Random();
+		
 		
 		System.out.println("ingrese el valor de m");
 		int m = Integer.parseInt(br.readLine());
-		
-		System.out.println("ingrese los numeros de la matriz separados por coma");
+		int AreaMatriz = m * m;
+		System.out.println("ingrese los " + AreaMatriz + " numeros de la matriz separados por coma");
 		String input = br.readLine();
 		String[] matInput = input.split(",");
 		int k = 0;
