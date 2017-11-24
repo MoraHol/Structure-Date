@@ -21,6 +21,7 @@ public class Merge_Sort {
 		hola = MergeSort(hola);
 		for (int i= 0;i < hola.length; i++) {
 			System.out.print(nright);
+			
 		}
 		
 		
