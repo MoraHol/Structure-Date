@@ -24,6 +24,6 @@ public class permutaciones {
 		}
 	}
 	public static int elegir (int n, int r) {
-		return (factorial(n))*((factorial(r))*factorial(n-r));
+		return (factorial(n))/((factorial(r))*factorial(n-r));
 	}
 }
