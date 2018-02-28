@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+
 public class Ordenamiento {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -11,8 +12,7 @@ public class Ordenamiento {
 		System.out.println("por favor ingrese los numeros a ordenar separados por coma:");
 		String input = br.readLine();
 		int[] vector = stringtoInt(input);
-		vector = PoscisionMenor(vector);
-		vector = sort(vector, 1);
+		vector = PoscisionMenor(vector, 0);
 		System.out.println("El arreglo ordenado es el siguiente:");
 		printVectors(vector);
 
@@ -54,40 +54,24 @@ public class Ordenamiento {
 	 *            } vector el cual se analizara su numero menor
 	 * @return } arreglo con el numero menor en la primera posicion
 	 */
-	public static int[] PoscisionMenor(int[] v) {
+	public static int[] PoscisionMenor(int[] v,int posicion) {
+		
 		int temp = 0, comp = Integer.MAX_VALUE, aux;
-		for (int i = 0; i < v.length; i++) {
-			if (v[i] < comp) {
-				temp = i;
-				comp = v[i];
-			}
-		}
-		aux = v[0];
-		v[0] = comp;
-		v[temp] = aux;
-		return v;
-	}
-
-	/**
-	 * 
-	 * @param v
-	 *            } vector al se ordenara
-	 * @param n
-	 *            } posicion desde donde se ordenara el arreglo
-	 * @return } arreglo ordenado
-	 */
-	public static int[] sort(int[] v, int n) {
-		if (n + 2 > v.length) {
+		if(posicion == v.length) {
 			return v;
-		} else {
-			if (v[n] > v[n + 1]) {
-				int aux = v[n];
-				v[n] = v[n + 1];
-				v[n + 1] = aux;
-				sort(v, n - 1);
+		}else {
+			for (int i = posicion; i < v.length; i++) {
+				if (v[i] < comp) {
+					temp = i;
+					comp = v[i];
+				}
 			}
-			return sort(v, n + 1);
-
+			aux = v[posicion];
+			v[posicion] = comp;
+			v[temp] = aux;
+			return PoscisionMenor(v, posicion + 1);
 		}
+		
+		
 	}
 }
