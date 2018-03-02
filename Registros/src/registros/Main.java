@@ -8,13 +8,14 @@ import java.util.Iterator;
 import javax.swing.JOptionPane;
 
 public class Main {
-	static Alumno[] al = new Alumno[1];
+	static Alumno[] al = new Alumno[2];
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
-		// inicializar();
-		// desplegarConsola();
-		inicializarBox();
+		//inicializar();
+		incializarEntrada();
+		//desplegarConsola();
+		//inicializarBox();
 		desplegarBox();
 	}
 
@@ -36,16 +37,15 @@ public class Main {
 	public static void incializarEntrada() throws NumberFormatException, IOException {
 		for (int i = 0; i < al.length; i++) {
 			System.out.println("Por favor introduzca el codigo del estudiante " + (i + 1) + ":");
-			int codigo = Integer.parseInt(br.readLine());
+			al[i].setCodigo(Integer.parseInt(br.readLine())); 
 			System.out.println("Por favor introduzca el nombre del estudiante " + (i + 1) + ":");
-			String nombre = br.readLine();
+			al[i].setNombre(br.readLine());
 			System.out.println("Por favor introduzca la primera nota  del estudiante " + (i + 1) + ":");
-			double nota1 = Double.parseDouble(br.readLine());
+			al[i].setNota1(Double.parseDouble(br.readLine())); 
 			System.out.println("Por favor introduzca la segunda nota del estudiante " + (i + 1) + ":");
-			double nota2 = Double.parseDouble(br.readLine());
+			al[i].setNota2(Double.parseDouble(br.readLine())); 
 			System.out.println("Por favor introduzca la tercera nota del estudiante " + (i + 1) + ":");
-			double nota3 = Double.parseDouble(br.readLine());
-			al[i] = new Alumno(codigo, nombre, nota1, nota2, nota3);
+			al[i].setNota3(Double.parseDouble(br.readLine())); 
 			System.out.println("Se ha guardado correctamente la informacion \n");
 		}
 	}
@@ -78,7 +78,7 @@ public class Main {
 
 	public static void desplegarBox() {
 		String nl = System.getProperty("line.separator");
-		JOptionPane.showMessageDialog(null, al[0].toString(), "Registros", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, al[0].toString() + nl +al[1].toString() + nl +al[2].toString() + nl +al[3].toString() + nl +al[4].toString() + nl +al[5].toString() + nl +al[6].toString() + nl +al[7].toString() + nl +al[8].toString() + nl +al[9].toString(), "Registros" , JOptionPane.INFORMATION_MESSAGE);
 	}
 
 }
