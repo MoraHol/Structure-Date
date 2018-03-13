@@ -1,0 +1,2 @@
+Trabajador [nombre=dsfdg, apellidos=adsf, direccion=dsfgf, salario=23456.0, Telefono=sdfgfh, NUI=dfg, Fnacimineto=dsfdg, Fingreso=dsfg, genero=null, email=dsdfgf, Registro=0]
+Trabajador [nombre=dsfgf, apellidos=dsfdgf, direccion=dsfdgf, salario=1.3243546E7, Telefono=dsfdgh, NUI=sdfghg, Fnacimineto=dsfdgf, Fingreso=sddfgff, genero=null, email=sdfgfhg, Registro=1]
