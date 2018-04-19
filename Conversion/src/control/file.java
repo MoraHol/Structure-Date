@@ -2,17 +2,17 @@ package control;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Writer;
-import file.*;
-
+/**
+ * @version 2.0
+ * @author Alexis Holguin ID:604549
+ * @date 14/03/2018
+ */
 public class file {
+
+	private static BufferedReader br;
 
 	public static void main(String[] args) throws IOException {
 		LeerFichero();
@@ -45,7 +45,7 @@ public class file {
 	 * @throws IOException
 	 */
 	public static void LeerFichero() throws IOException {
-		BufferedReader br = new BufferedReader(new FileReader("src\\file\\Romano.txt"));
+		br = new BufferedReader(new FileReader("src\\file\\Romano.txt"));
 		BufferedWriter bw = new BufferedWriter(new FileWriter("src\\file\\Arabigo.txt"));
 		String line = null;
 		try {
@@ -55,8 +55,8 @@ public class file {
 				line = br.readLine();
 			}
 			bw.close();
+			br.close();
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 	}
 
