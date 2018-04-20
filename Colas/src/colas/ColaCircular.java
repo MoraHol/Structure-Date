@@ -2,51 +2,54 @@ package colas;
 
 import java.util.Arrays;
 
-public class ColaCirculas {
-	private int Q[];
+public class ColaCircular {
+	private String Q[];
 	private int FRENTE;
 	private int FINAL;
 	private int MAX;
 
-	public ColaCirculas(int max) {
+	public ColaCircular(int max) {
 		FRENTE = 0;
 		FINAL = 0;
 		MAX = max;
-		Q = new int[max];
+		Q = new String[max];
 	}
 
-	public void insertar(int elem) {
-		if (FINAL == MAX && FRENTE == 1 || FRENTE == FINAL + 1) {
+	public void insertar(String elem) {
+		if ((FINAL == MAX - 1 && FRENTE == 1) || FRENTE == FINAL + 1) {
 			System.out.println("cola llena");
 			return;
-		}else {
-			if(FINAL == MAX) {
+		} else {
+			if (FINAL == MAX - 1) {
 				FINAL = 1;
-			}else {
+			} else {
 				if (FRENTE == 0) {
 					FRENTE = 1;
 					FINAL = 1;
-				}else {
+				} else {
 					FINAL++;
-					Q[FINAL] = elem;
+					
 				}
+				Q[FINAL] = elem;
 			}
-				
+
 		}
 	}
-	public int eliminar() {
-		int elem = 0;
+
+	public String eliminar() {
+		String elem = null;
 		if (FRENTE == 0) {
 			System.out.println("cola vacia");
-		}else {
+			return "";
+		} else {
 			elem = Q[FRENTE];
 			if (FRENTE == MAX) {
 				FRENTE = 1;
-			}else {
-				if(FRENTE == FINAL) {
-					FRENTE =0;
+			} else {
+				if (FRENTE == FINAL) {
+					FRENTE = 0;
 					FINAL = 0;
-				}else{
+				} else {
 					FRENTE++;
 				}
 			}
@@ -58,5 +61,5 @@ public class ColaCirculas {
 	public String toString() {
 		return Arrays.toString(Q);
 	}
-	
+
 }
