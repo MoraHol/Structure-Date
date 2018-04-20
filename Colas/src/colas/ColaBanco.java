@@ -37,7 +37,7 @@ public class ColaBanco {
 		case 2:
 			System.out.println("la persona que salio de la cola es: " + circular.eliminar());
 		case 3:
-			System.out.println(circular.toString());
+			System.out.println(circular);
 		default:
 			break;
 		}
