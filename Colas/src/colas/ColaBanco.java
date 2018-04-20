@@ -4,9 +4,10 @@ import java.util.Scanner;
 
 public class ColaBanco {
 	static ColaCircular circular;
+	private static Scanner scan;
 
 	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
+		scan = new Scanner(System.in);
 		System.out.println("Bienvenido al Su Banco");
 		System.out.println("por favor ingrese el numero de persona que puede tener la cola: ");
 		int numero = scan.nextInt();
@@ -20,7 +21,7 @@ public class ColaBanco {
 	public static int menu() {
 		System.out.println(
 				"Que desea hacer: \n" + "1. agregar persona a la cola \n" + "2. quitar una persona de la cola\n " + "ingrese su desicion:");
-		Scanner scan = new Scanner(System.in);
+		scan = new Scanner(System.in);
 		int opcion = scan.nextInt();
 		return opcion;
 	}
