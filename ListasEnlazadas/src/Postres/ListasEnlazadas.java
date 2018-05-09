@@ -11,12 +11,13 @@ import java.util.Scanner;
 public class ListasEnlazadas {
 	private ArrayList<Postres> postres;
 	private Scanner scan = new Scanner(System.in);
-
+	private static boolean flag = false;
 	public int mostrarMenu() {
 		System.out.println("---------------------------------------------------------- \n" + "Que desea realizar: \n"
 				+ "1. listar postres. \n" + "2. Insertar ingredientes a un postre \n"
 				+ "3. Eliminar ingredientees a un protres \n" + "4. Ingresar un postres con todos sus ingredientes. \n"
 				+ "5. Eliminar un postre. \n" + "6. listar Ingredientes de un postre. \n"
+				+ "7. Salir \n"
 				+ "---------------------------------------------------------- \n");
 		return scan.nextInt();
 	}
@@ -40,6 +41,9 @@ public class ListasEnlazadas {
 			break;
 		case 6:
 			ListarIngredientes();
+			break;
+		default:
+			flag = true;
 			break;
 		}
 	}
@@ -134,7 +138,7 @@ public class ListasEnlazadas {
 		n.postres.get(1).getIngredientes().add("crema de leche");
 		do {
 			n.opciones(n.mostrarMenu());
-		} while (true);
+		} while (!flag);
 	}
 
 }
