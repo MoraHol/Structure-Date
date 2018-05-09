@@ -43,6 +43,7 @@ public class ColaCircular {
 			return "";
 		} else {
 			elem = Q[FRENTE];
+			Q[FRENTE] = null;
 			if (FRENTE == MAX) {
 				FRENTE = 1;
 			} else {
@@ -54,6 +55,7 @@ public class ColaCircular {
 				}
 			}
 		}
+		
 		return elem;
 	}
 

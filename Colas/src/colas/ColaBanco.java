@@ -20,7 +20,7 @@ public class ColaBanco {
 
 	public static int menu() {
 		System.out.println(
-				"Que desea hacer: \n" + "1. agregar persona a la cola \n" + "2. quitar una persona de la cola\n " + "ingrese su desicion:");
+				"Que desea hacer: \n" + "1. agregar persona a la cola \n" + "2. quitar una persona de la cola\n"+"3. mostar cola" + "ingrese su desicion:");
 		scan = new Scanner(System.in);
 		int opcion = scan.nextInt();
 		return opcion;
@@ -36,6 +36,8 @@ public class ColaBanco {
 			break;
 		case 2:
 			System.out.println("la persona que salio de la cola es: " + circular.eliminar());
+		case 3:
+			System.out.println(circular);
 		default:
 			break;
 		}
