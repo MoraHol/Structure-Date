@@ -3,7 +3,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * @since 12:55 a.m
@@ -159,7 +158,7 @@ public class ListasEnlazadas {
 		MostrarIngredientes(option - 1);
 	}
 	/**
-	 * elimina un postre del ArrayList con todos sus ingredientes
+	 * elimina un postre del ArrayList con todos sus ingredientes   
 	 * @throws IOException 
 	 * @throws NumberFormatException 
 	 */
@@ -184,10 +183,12 @@ public class ListasEnlazadas {
 		n.postres.add(postre);
 		n.postres.get(1).getIngredientes().add("gelatina");
 		n.postres.get(1).getIngredientes().add("leche");
+		
 		n.postres.get(1).getIngredientes().add("crema de leche");
 		do {
 			n.opciones(n.mostrarMenu());
 		} while (!flag);
 	}
+	
 
 }
