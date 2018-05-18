@@ -2,10 +2,14 @@ package arbol;
 
 public class test {
 	public static void main(String[] args) {
+		BufferedReader br = new BufferedReader(new InputStreamReader (System.in));
+		System.out.println("ingrese los numeros que desea agregar al arbol separados por coma :");
+		String line = br.readLine();
 		Arbol arbol = new Arbol();
 		int[] nodos = {6,3,4,2,1,8,9,4,5,7};
+		String[] numeros = line.split(",");
 		for (int i = 0; i < nodos.length; i++) {
-			arbol.addNodo(nodos[i]);
+			arbol.addNodo(Integer.parseInt(numeros[i]));
 		}
 		System.out.println("En este nodo hay: "+arbol.CountNodes());
 		System.out.println("arbol en inorden: ");
