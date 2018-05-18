@@ -10,8 +10,8 @@ import Arbol.Nodo;
 public class Puzzle {
 	public static void main(String[] args) {
 		int n = 3;
-		int[][] inicio = { { 8, 0, 4 }, {2, 7, 3 }, { 1, 5, 6 } };
-		//int[][] inicio = {{4,0,7,1},{5,13,12,3},{9,10,2,8},{11,14,6,15}};
+		int[][] inicio = { { 8, 1, 2 }, {7, 6, 4 }, { 0, 5, 3 } };
+		//int[][] inicio = { { 9, 15, 1, 4 }, { 14, 3, 2, 12 }, { 13, 6, 7, 8 }, { 10, 0, 5, 11 } };
 		//int[][] inicio = RandomFillTokens(n);
 
 		int[][] solucion = MakeSolution(n);
