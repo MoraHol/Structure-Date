@@ -7,65 +7,59 @@ import java.util.Stack;
 
 import Arbol.Nodo;
 
-public class Pluzze2 {
-	static int n =4;
-	static final int[][] solucion = MakeSolution(n);
+public class Puzzle2 {
+	private int[][] problema;
+	private Stack<Nodo> pasos;
+	private int n;
+	private int[][] solucion;
+	private int movimientos;
 
-	public static void main(String[] args) {
-
-		//int[][] inicio = RandomFillTokens(n);
-		//int[][] inicio = { { 8, 1, 2 }, {7, 6, 4 }, { 0, 5, 3 } };
-		//int[][] inicio = { { 1, 6, 2 }, {5, 8, 7 }, { 4, 0, 3 } };
-		int[][] inicio = { { 4, 14, 3, 7 }, { 1, 10, 8, 0 }, { 9, 11, 2, 12 }, { 13, 6, 5, 15 } };
-		
-		System.out.println("sin solucionar");
-		printMatriz(inicio);
-		System.out.println("solucion");
-		printMatriz(solucion);
-
-		Nodo sol = findSolution(inicio, solucion, n);
-		Stack<Nodo> pasos = new Stack<>();
-		System.out.println("pasos:");
-		printMatriz(inicio);
-		System.out.println();
+	public Puzzle2(int n) {
+		movimientos = 0;
+		this.n = n;
+		solucion = MakeSolution(n);
+		problema = RandomFillTokens(n);
+		Nodo sol = findSolution(problema, solucion, n);
+		pasos = new Stack<>();
 		while (sol.getPadre() != null) {
 			pasos.add(sol);
 			sol = sol.getPadre();
+			movimientos += 1;
 		}
-		int count = 0;
-		while (!pasos.isEmpty()) {
-			printMatriz(pasos.pop().getInfo());
-			System.out.println();
-			count++;
-		}
-		System.out.println(count);
 
 	}
 
-	static void printMatriz(int[][] matriz) {
-		for (int i = 0; i < matriz.length; i++) {
-			for (int j = 0; j < matriz.length; j++) {
-				System.out.print("[" + matriz[i][j] + "]");
-			}
-			System.out.println("");
-		}
+	public int getMovimientos() {
+		return movimientos;
 	}
 
-	static Nodo findSolution(int[][] problem, int[][] solution, int n) {
+	public Stack<Nodo> getPasos() {
+		return pasos;
+	}
+
+	public int[][] getProblema() {
+		return problema;
+	}
+
+	public int[][] getSolution() {
+		return solucion;
+	}
+
+	private Nodo findSolution(int[][] problem, int[][] solution, int n) {
 		Nodo revisar = new Nodo(problem);
 		ArrayList<Nodo> Recorridos = new ArrayList<>();
 		int menorCoste;
 		ArrayList<Nodo> visitados = new ArrayList<>();
-		int count = 0;
+		// int count = 0;
 		while (true) {
 			visitados.add(revisar);
-			
+
 			if (Arrays.deepEquals(revisar.getInfo(), solution)) {
-				System.out.println(count);
+				// System.out.println(count);
 				return revisar;
 			}
 			int posicion = -1;
-			ArrayList<Nodo> hijos = generateChildren(revisar, n,visitados);
+			ArrayList<Nodo> hijos = generateChildren(revisar, n, visitados);
 			for (Nodo hijo : hijos) {
 				Recorridos.add(hijo);
 				if (hijo.getPadre().getPadre() != null) {
@@ -83,18 +77,18 @@ public class Pluzze2 {
 			menorCoste = Integer.MAX_VALUE;
 			for (Nodo nodo : Recorridos) {
 				int auxCost = minCost(nodo, n);
-				if (auxCost < menorCoste ) {
+				if (auxCost < menorCoste) {
 					revisar = nodo;
 					menorCoste = auxCost;
 				}
 			}
-			
+
 			Recorridos.remove(revisar);
-			count++;
+			// count++;
 		}
 	}
 
-	static ArrayList<Nodo> generateChildren(Nodo revisar, int n,ArrayList<Nodo> visitados) {
+	private ArrayList<Nodo> generateChildren(Nodo revisar, int n, ArrayList<Nodo> visitados) {
 		int[] pCero = ubicarPosicionCero(revisar.getInfo());
 		ArrayList<Nodo> hijos = new ArrayList<>();
 		if (pCero[0] != 0) {
@@ -137,11 +131,11 @@ public class Pluzze2 {
 		return hijos;
 	}
 
-	static int minCost(Nodo x, int n) {
+	private int minCost(Nodo x, int n) {
 		return fatherDistance(x) + uncorredPosition(x, n);
 	}
 
-	static int fatherDistance(Nodo x) {
+	private int fatherDistance(Nodo x) {
 		int counter = 0;
 		Nodo aux = x;
 		while (aux.getPadre() != null) {
@@ -151,7 +145,7 @@ public class Pluzze2 {
 		return counter;
 	}
 
-	static int uncorredPosition(Nodo x, int n) {
+	private int uncorredPosition(Nodo x, int n) {
 		int[][] ordenada = solucion;
 		int counter = 0;
 		for (int i = 0; i < ordenada.length; i++) {
@@ -164,7 +158,7 @@ public class Pluzze2 {
 		return counter;
 	}
 
-	static int[] ubicarPosicionCero(int[][] matriz) {
+	private int[] ubicarPosicionCero(int[][] matriz) {
 		int[] vectorCero = new int[2]; // guardar la posición de cero
 		for (int i = 0; i < matriz.length; i++) {
 			for (int j = 0; j < matriz.length; j++) {
@@ -179,7 +173,7 @@ public class Pluzze2 {
 		return vectorCero;
 	}
 
-	static int[][] MakeSolution(int n) {
+	public static int[][] MakeSolution(int n) {
 		int aux = 1;
 		int[][] solucion = new int[n][n];
 		for (int i = 0; i < n; i++) {
@@ -197,12 +191,13 @@ public class Pluzze2 {
 
 	}
 
-	static int[][] RandomFillTokens(int n) {
+	private int[][] RandomFillTokens(int n) {
+		int aux = n == 3 ? 0 : n == 4 ? 4 : n == 5 ? 6 : 8;
 		int[][] Ordenada = clone(solucion);
 		Random rd = new Random();
 		int[] pCero = ubicarPosicionCero(Ordenada);
 		Nodo x = new Nodo(Ordenada);
-		while(uncorredPosition(x, n) != (n*n)) {
+		while (uncorredPosition(x, n) != (n * n) - aux) {
 			x.setInfo(Ordenada);
 			pCero = ubicarPosicionCero(Ordenada);
 			switch (rd.nextInt(4)) {
@@ -242,7 +237,7 @@ public class Pluzze2 {
 		return Ordenada;
 	}
 
-	static int[][] clone(int[][] matriz) {
+	private int[][] clone(int[][] matriz) {
 		int[][] clon = new int[matriz.length][matriz.length];
 		for (int i = 0; i < matriz.length; i++) {
 			clon[i] = matriz[i].clone();
