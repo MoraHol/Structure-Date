@@ -10,13 +10,11 @@ import Arbol.Nodo;
 public class Puzzle2 {
 	private int[][] problema;
 	private Stack<Nodo> pasos;
-	private int n;
 	private int[][] solucion;
 	private int movimientos;
 
 	public Puzzle2(int n) {
 		movimientos = 0;
-		this.n = n;
 		solucion = MakeSolution(n);
 		problema = RandomFillTokens(n);
 		Nodo sol = findSolution(problema, solucion, n);
@@ -192,7 +190,7 @@ public class Puzzle2 {
 	}
 
 	private int[][] RandomFillTokens(int n) {
-		int aux = n == 3 ? 0 : n == 4 ? 4 : n == 5 ? 6 : 8;
+		int aux = n == 3 ? 0 : n == 4 ? 4 : n == 5 ? 6 : 10;
 		int[][] Ordenada = clone(solucion);
 		Random rd = new Random();
 		int[] pCero = ubicarPosicionCero(Ordenada);

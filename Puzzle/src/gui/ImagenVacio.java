@@ -7,6 +7,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class ImagenVacio extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2021757636536716161L;
 	public ImagenVacio() {
 		setSize(200,200);
 	}

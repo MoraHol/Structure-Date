@@ -27,22 +27,14 @@ public class InteriorRombo {
 			}
 			System.out.println();
 		}
-		int k;
-		
-		
 		if(m % 2 == 0)
 		{
 			matriz2 = RomboPar(matriz, m);
-			k = matriz.length /2;
 		}
 		else
 		{
-			matriz2 = RomboImpar(matriz, m); 
-			k = matriz.length /2 + 1;
+			matriz2 = RomboImpar(matriz, m);
 		}
-		int i,j;
-		
-		
 		System.out.println();
 		
 		MostrarMAtriz(matriz2);

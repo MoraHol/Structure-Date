@@ -1,8 +1,5 @@
 package POO;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 public class clock {
 	public static void main (String[]args) {
 		for (int h = 0; h < 24;h++) {

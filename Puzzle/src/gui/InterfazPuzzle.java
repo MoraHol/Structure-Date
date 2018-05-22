@@ -6,26 +6,21 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
 import javax.swing.DefaultComboBoxModel;
 import java.awt.GridLayout;
 import java.awt.Font;
-import javax.swing.SwingConstants;
-
 import Puzzle.Puzzle2;
 import javax.swing.JButton;
 
 public class InterfazPuzzle extends JFrame implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4443378289133988492L;
 	private Puzzle2 puzzle;
-	private ArrayList<int[][]> pasos;
 	private int n;
-	private int x = 0;
 	private static final String GENERAR_PROBLEMA = "generar problema";
 	private static final String GENERAR = "generar puzzle";
 	private static final String NEXTSTEP = "siguiente paso";

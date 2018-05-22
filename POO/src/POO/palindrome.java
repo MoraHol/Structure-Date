@@ -14,7 +14,7 @@ public class palindrome {
 		int start = 0;
 		int end= 0;
 		boolean change = false;
-		BufferedReader rd = new BufferedReader (new InputStreamReader(System.in));
+		new BufferedReader (new InputStreamReader(System.in));
 		word = JOptionPane.showInputDialog(null, "Digite la palabra que quiere comprobar:");
 		end = word.length()-1;
 		

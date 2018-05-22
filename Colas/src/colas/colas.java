@@ -15,7 +15,7 @@ public class colas {
 		scan = new BufferedReader(new InputStreamReader(System.in));
 		int numero = Integer.parseInt(scan.readLine());
 		String Aux = scan.readLine();
-		boolean ola = cola.add(Aux);
+		cola.add(Aux);
 		for (int i = 0; i < numero; i++) {
 			System.out.println("ingrese numero a insertar");
 			Aux = scan.readLine();

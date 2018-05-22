@@ -7,6 +7,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class Imagen31 extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5143271488667296756L;
 	public Imagen31() {
 		setSize(200,200);
 	}

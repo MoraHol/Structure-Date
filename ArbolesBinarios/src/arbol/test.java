@@ -23,6 +23,7 @@ public class test {
 	}
 
 	static int menu() {
+		@SuppressWarnings("resource")
 		Scanner scan = new Scanner(System.in);
 		System.out.println("--------------------------------------------");
 		System.out.println("1. inicilizar arbol \n" + "2. agregar nodos \n" + "3. mostar informacion del arbol \n"

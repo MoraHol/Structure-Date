@@ -25,8 +25,8 @@ public class Main {
 		{
 			array1[i] = Integer.parseInt(array[i]);
 		}
-		sortingAlgorithms dr = new sortingAlgorithms();
-		array1 = dr.mergeSort(array1);
+		new sortingAlgorithms();
+		array1 = sortingAlgorithms.mergeSort(array1);
 		for (int i = 0; i< array1.length;i++) {
 			if (i < array.length - 1)
 			{
