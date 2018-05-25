@@ -43,7 +43,7 @@ public class InterfazPuzzle extends JFrame implements ActionListener {
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.NORTH);
 		panel.setLayout(new GridLayout(0, 4, 0, 0));
-
+		setLocationRelativeTo(null);
 		JLabel LabelTamaño = new JLabel("Tama\u00F1o");
 		panel.add(LabelTamaño);
 

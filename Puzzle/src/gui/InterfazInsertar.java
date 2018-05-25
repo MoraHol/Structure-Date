@@ -21,7 +21,7 @@ public class InterfazInsertar extends JFrame implements ActionListener {
 		this.principal = principal;
 		this.n = n;
 		setResizable(false);
-		setLocationRelativeTo(null);
+		setLocation(0, 0);
 		setSize(400,400);
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.NORTH);

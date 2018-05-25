@@ -37,16 +37,16 @@ public class Puzzle2 {
 
 	private void generarSolucion(int n) {
 		Nodo sol = findSolution(problema, solucion, n);
-		//if (sol != null) {
+		if (sol != null) {
 			pasos = new Stack<>();
 			while (sol.getPadre() != null) {
 				pasos.add(sol);
 				sol = sol.getPadre();
 				movimientos += 1;
 			}
-		//} else {
-			//JOptionPane.showMessageDialog(null, "solcuion inalcanzable");
-		//}
+		} else {
+			JOptionPane.showMessageDialog(null, "solcuion inalcanzable");
+		}
 	}
 
 	public int getMovimientos() {
@@ -73,9 +73,9 @@ public class Puzzle2 {
 		ArrayList<Nodo> visitados = new ArrayList<>();
 		while (true) {
 			visitados.add(revisar);
-			//if (Recorridos.size() >= 10000) {
-				//return null;
-			//}
+			if (Recorridos.size() >= 15000) {
+				return null;
+			}
 			if (Arrays.deepEquals(revisar.getInfo(), solution)) {
 				System.out.println(count);
 				return revisar;
