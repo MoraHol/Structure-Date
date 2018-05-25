@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Stack;
 
+import javax.swing.JOptionPane;
+
 import Arbol.Nodo;
 
 public class Puzzle2 {
@@ -12,19 +14,39 @@ public class Puzzle2 {
 	private Stack<Nodo> pasos;
 	private int[][] solucion;
 	private int movimientos;
+	private int n;
 
 	public Puzzle2(int n) {
 		movimientos = 0;
 		solucion = MakeSolution(n);
 		problema = RandomFillTokens(n);
-		Nodo sol = findSolution(problema, solucion, n);
-		pasos = new Stack<>();
-		while (sol.getPadre() != null) {
-			pasos.add(sol);
-			sol = sol.getPadre();
-			movimientos += 1;
-		}
+		this.n = n;
 
+	}
+
+	public Puzzle2(int[][] problem, int n) {
+		movimientos = 0;
+		solucion = MakeSolution(n);
+		problema = problem;
+		this.n = n;
+	}
+
+	public void generarSolucion() {
+		generarSolucion(n);
+	}
+
+	private void generarSolucion(int n) {
+		Nodo sol = findSolution(problema, solucion, n);
+		//if (sol != null) {
+			pasos = new Stack<>();
+			while (sol.getPadre() != null) {
+				pasos.add(sol);
+				sol = sol.getPadre();
+				movimientos += 1;
+			}
+		//} else {
+			//JOptionPane.showMessageDialog(null, "solcuion inalcanzable");
+		//}
 	}
 
 	public int getMovimientos() {
@@ -44,33 +66,33 @@ public class Puzzle2 {
 	}
 
 	private Nodo findSolution(int[][] problem, int[][] solution, int n) {
+		int count = 0;
 		Nodo revisar = new Nodo(problem);
 		ArrayList<Nodo> Recorridos = new ArrayList<>();
 		int menorCoste;
 		ArrayList<Nodo> visitados = new ArrayList<>();
-		// int count = 0;
 		while (true) {
 			visitados.add(revisar);
-
+			//if (Recorridos.size() >= 10000) {
+				//return null;
+			//}
 			if (Arrays.deepEquals(revisar.getInfo(), solution)) {
-				// System.out.println(count);
+				System.out.println(count);
 				return revisar;
 			}
 			int posicion = -1;
 			ArrayList<Nodo> hijos = generateChildren(revisar, n, visitados);
 			for (Nodo hijo : hijos) {
 				Recorridos.add(hijo);
-				if (hijo.getPadre().getPadre() != null) {
-					if (Arrays.deepEquals(hijo.getInfo(), hijo.getPadre().getPadre().getInfo())) {
-						Recorridos.remove(hijo);
-						posicion = hijos.lastIndexOf(hijo);
-					}
-				}
+				/*
+				 * if (hijo.getPadre().getPadre() != null) { if
+				 * (Arrays.deepEquals(hijo.getInfo(), hijo.getPadre().getPadre().getInfo())) {
+				 * Recorridos.remove(hijo); posicion = hijos.lastIndexOf(hijo); } }
+				 */
 			}
-			if (posicion != -1) {
-				hijos.remove(posicion);
-				revisar.setHijos(hijos);
-			}
+			/*
+			 * if (posicion != -1) { hijos.remove(posicion); revisar.setHijos(hijos); }
+			 */
 
 			menorCoste = Integer.MAX_VALUE;
 			for (Nodo nodo : Recorridos) {
@@ -80,9 +102,8 @@ public class Puzzle2 {
 					menorCoste = auxCost;
 				}
 			}
-
+			count++;
 			Recorridos.remove(revisar);
-			// count++;
 		}
 	}
 
@@ -130,7 +151,9 @@ public class Puzzle2 {
 	}
 
 	private int minCost(Nodo x, int n) {
-		return fatherDistance(x) + uncorredPosition(x, n);
+		// return fatherDistance(x) + uncorredPosition(x, n);
+		return fatherDistance(x) + sumaDistanciaManhattan(x, n) + uncorredPosition(x, n);
+		// return fatherDistance(x) + sumaDistanciaManhattan(x, n);
 	}
 
 	private int fatherDistance(Nodo x) {
@@ -156,8 +179,34 @@ public class Puzzle2 {
 		return counter;
 	}
 
+	private int sumaDistanciaManhattan(Nodo x, int n) {
+		int[] vectorPosicion;
+		int sum = 0;
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				vectorPosicion = buscarPosicion(x.getInfo()[i][j]);
+				sum += Math.abs(vectorPosicion[0] - i) + Math.abs(vectorPosicion[1] - j);
+			}
+		}
+		return sum;
+	}
+
+	private int[] buscarPosicion(int n) {
+		int[] vectorPosicion = new int[2];
+		for (int i = 0; i < solucion.length; i++) {
+			for (int j = 0; j < solucion.length; j++) {
+				if (solucion[i][j] == n) {
+					vectorPosicion[0] = i;
+					vectorPosicion[1] = j;
+				}
+			}
+		}
+		return vectorPosicion;
+	}
+
 	private int[] ubicarPosicionCero(int[][] matriz) {
 		int[] vectorCero = new int[2]; // guardar la posición de cero
+
 		for (int i = 0; i < matriz.length; i++) {
 			for (int j = 0; j < matriz.length; j++) {
 				if (matriz[i][j] == 0) {
@@ -166,8 +215,6 @@ public class Puzzle2 {
 				}
 			}
 		}
-		// System.out.println("la posicion de cero es: " + vectorCero[0] + " " +
-		// vectorCero[1]);
 		return vectorCero;
 	}
 
@@ -190,7 +237,7 @@ public class Puzzle2 {
 	}
 
 	private int[][] RandomFillTokens(int n) {
-		int aux = n == 3 ? 0 : n == 4 ? 4 : n == 5 ? 6 : 10;
+		int aux = n == 3 ? 0 : n == 4 ? 2 : n == 5 ? 6 : 10;
 		int[][] Ordenada = clone(solucion);
 		Random rd = new Random();
 		int[] pCero = ubicarPosicionCero(Ordenada);

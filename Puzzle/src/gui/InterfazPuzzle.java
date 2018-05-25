@@ -2,15 +2,21 @@ package gui;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.DefaultComboBoxModel;
 import java.awt.GridLayout;
 import java.awt.Font;
+
+import Puzzle.Puzzle;
 import Puzzle.Puzzle2;
 import javax.swing.JButton;
 
@@ -24,12 +30,15 @@ public class InterfazPuzzle extends JFrame implements ActionListener {
 	private static final String GENERAR_PROBLEMA = "generar problema";
 	private static final String GENERAR = "generar puzzle";
 	private static final String NEXTSTEP = "siguiente paso";
+	private static final String GENERAR_SOLUCION = "generar solucion";
+	private static final String INSERTAR_PUZZLE = "insertar";
 	private JComboBox<String> comboBoxTamaño;
 	private JPanel panelPuzzle;
 	private JLabel Movimientos;
+	private boolean flag;
 
 	public InterfazPuzzle() {
-		setSize(600, 600);
+		setSize(700, 700);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.NORTH);
@@ -50,10 +59,18 @@ public class InterfazPuzzle extends JFrame implements ActionListener {
 		btnGenerar.setActionCommand(GENERAR_PROBLEMA);
 		btnGenerar.addActionListener(this);
 		panel.add(btnGenerar);
-		
+
 		panel.add(new JLabel(""));
-		panel.add(new JLabel(""));
-		panel.add(new JLabel(""));
+
+		JButton btnInsertarPuzzleEspecifico = new JButton("Insertar Puzzle Especifico");
+		btnInsertarPuzzleEspecifico.setActionCommand(INSERTAR_PUZZLE);
+		btnInsertarPuzzleEspecifico.addActionListener(this);
+		panel.add(btnInsertarPuzzleEspecifico);
+
+		JButton btnGenerarSolucion = new JButton("Generar Solucion");
+		panel.add(btnGenerarSolucion);
+		btnGenerarSolucion.setActionCommand(GENERAR_SOLUCION);
+		btnGenerarSolucion.addActionListener(this);
 
 		JButton btnSiguientePaso = new JButton("Siguiente paso");
 		btnSiguientePaso.setActionCommand(NEXTSTEP);
@@ -66,7 +83,6 @@ public class InterfazPuzzle extends JFrame implements ActionListener {
 		getContentPane().add(panel_2, BorderLayout.SOUTH);
 		panel_2.setLayout(new GridLayout(1, 0, 0, 0));
 
-	
 		panel_2.add(new JLabel(""));
 		panel_2.add(new JLabel(""));
 		panel_2.add(new JLabel(""));
@@ -85,15 +101,46 @@ public class InterfazPuzzle extends JFrame implements ActionListener {
 		try {
 			puzzle = new Puzzle2(n);
 			panelPuzzle.removeAll();
-			panelPuzzle.setLayout(new GridLayout(n, n));
 			cicloGenerador(n, puzzle.getProblema());
-			Movimientos.setText(Integer.toString(puzzle.getMovimientos()));
+			Movimientos.setText("0");
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(this, "Por favor seleccione tamaño");
 		}
 	}
 
+	private void generarSolucion() {
+		try {
+			if (flag) {
+				puzzle.generarSolucion();
+				Movimientos.setText(Integer.toString(puzzle.getMovimientos()));
+				JOptionPane.showMessageDialog(null, "Se ha generardo la solucion");
+			} else {
+				JOptionPane.showMessageDialog(null, "Ya se ha generado una solcuión para este puzzle", "Puzzle",
+						JOptionPane.WARNING_MESSAGE);
+			}
+
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Primero deber generar el puzzle", "Puzzle", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+
+	private void insertarPuzzle() {
+		try {
+		InterfazInsertar interfazInsertar = new InterfazInsertar(n,this);
+		interfazInsertar.setVisible(true);
+		}catch (Exception e) {
+			JOptionPane.showMessageDialog(this, "Por favor seleccione tamaño");
+		}
+	}
+	public void insertar(int[][] matriz) {
+		puzzle = new Puzzle2(matriz, n);
+		panelPuzzle.removeAll();
+		flag = true;
+		cicloGenerador(n, puzzle.getProblema());
+		
+	}
 	private void generarPuzzle() {
+		puzzle = null;
 		panelPuzzle.removeAll();
 		if (comboBoxTamaño.getSelectedItem().equals("3x3")) {
 			n = 3;
@@ -201,34 +248,39 @@ public class InterfazPuzzle extends JFrame implements ActionListener {
 		}
 	}
 
-	public static void main(String[] args) {
-		InterfazPuzzle puzzle = new InterfazPuzzle();
-		puzzle.setVisible(true);
-	}
-
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		String comando = arg0.getActionCommand();
 		// generara un puzzle ordenado
 		if (comando.equals(GENERAR)) {
 			generarPuzzle();
+			flag = true;
 		}
 		if (comando.equals(NEXTSTEP)) {
 			try {
 				if (!puzzle.getPasos().isEmpty()) {
+					flag = false;
 					siguientePaso();
 				} else {
+					puzzle = null;
+					flag = true;
 					if (JOptionPane.showConfirmDialog(this, "ya esta soluciondo el puzzle ¿Desea generar otro?",
 							"Puzzle", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 						generarProblema();
 					}
 				}
 			} catch (Exception e) {
-				JOptionPane.showMessageDialog(this, "Genere primero el Puzzle");
+				JOptionPane.showMessageDialog(this, "Genere primero la solucion", "Puzzle", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		if (comando.equals(GENERAR_PROBLEMA)) {
 			generarProblema();
+		}
+		if (comando.equals(GENERAR_SOLUCION)) {
+			generarSolucion();
+		}
+		if (comando.equals(INSERTAR_PUZZLE)) {
+			insertarPuzzle();
 		}
 	}
 
