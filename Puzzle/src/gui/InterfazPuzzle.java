@@ -16,74 +16,73 @@ import java.awt.Font;
 import Puzzle.Puzzle2;
 import javax.swing.JButton;
 
+// TODO: Auto-generated Javadoc
 /**
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * $Id$ 
- * Universidad Minuto de Dios (Bogotá - Colombia) 
- * Departamento de Ingeniería de Sistemas
+ * $Id$ Universidad Minuto de Dios (Bogotá - Colombia) Departamento de
+ * Ingeniería de Sistemas
  * 
  * clase que maneja toda la parte gráfica del puzzle
  * 
- * Ejercicio: Puzzle
- * 
+ * Ejercicio: Puzzle.
+ *
  * @author Alexis Holguin
  * @since Mayo 20, 2018
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 public class InterfazPuzzle extends JFrame implements ActionListener {
 	// -----------------------------------------------------------------------------------------------
 	// Atributos
+	/** The Constant serialVersionUID. */
 	// -----------------------------------------------------------------------------------------------
 	private static final long serialVersionUID = -4443378289133988492L;
-	/**
-	 * atributo para manejar la parte lógica del puzzle
-	 */
+
+	/** atributo para manejar la parte lógica del puzzle. */
 	private Puzzle2 puzzle;
-	/**
-	 * tamaño del puzzle
-	 */
+
+	/** tamaño del puzzle. */
 	private int n;
-	/**
-	 * comando para generar randomicamente
-	 */
+
+	/** comando para generar randomicamente. */
 	private static final String GENERAR_PROBLEMA = "generar problema";
-	/**
-	 * comando para mostrar en la interfaz el puzzle ordenado
-	 */
+
+	/** comando para mostrar en la interfaz el puzzle ordenado. */
 	private static final String GENERAR = "generar puzzle";
-	/**
-	 * comando para mostrar el siguiente paso en la interfaz
-	 */
+
+	/** comando para mostrar el siguiente paso en la interfaz. */
 	private static final String NEXTSTEP = "siguiente paso";
-	/**
-	 * comando para generar la solución de un puzzle problema dado
-	 */
+
+	/** comando para generar la solución de un puzzle problema dado. */
 	private static final String GENERAR_SOLUCION = "generar solucion";
-	/**
-	 * comando para insertar un puzzle especifico ingresad por la interfaz
-	 */
+
+	/** comando para insertar un puzzle especifico ingresad por la interfaz. */
 	private static final String INSERTAR_PUZZLE = "insertar";
-	/**
-	 * comboBox para escoger el tamaño del puzzle
-	 */
+
+	/** comboBox para escoger el tamaño del puzzle. */
 	private JComboBox<String> comboBoxTamaño;
+
 	/**
-	 * panel para ingresar los paneles correspondientes para la creación del puzzle
+	 * panel para ingresar los paneles correspondientes para la creación del puzzle.
 	 */
 	private JPanel panelPuzzle;
+
 	/**
 	 * Muestra en la interfaz el numero de movimientos necesarios para resolver un
-	 * puzzle indicado
+	 * puzzle indicado.
 	 */
 	private JLabel Movimientos;
+
 	/**
 	 * bandera para saber si ya ha sido generado una solución a un determinado
-	 * puzzle
+	 * puzzle.
 	 */
 	private boolean flag;
 
 	// -----------------------------------------------------------------------------------------------
 	// Constructor
+	/**
+	 * Instantiates a new interfaz puzzle.
+	 */
 	// -----------------------------------------------------------------------------------------------
 	public InterfazPuzzle() {
 		setSize(700, 700);
@@ -149,7 +148,7 @@ public class InterfazPuzzle extends JFrame implements ActionListener {
 	// Métodos
 	// -----------------------------------------------------------------------------------------------
 	/**
-	 * generará un puzzle desordenado
+	 * generará un puzzle desordenado.
 	 */
 	private void generarProblema() {
 		try {
@@ -163,7 +162,7 @@ public class InterfazPuzzle extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * generará la solución a un puzzle determinado
+	 * generará la solución a un puzzle determinado.
 	 */
 	private void generarSolucion() {
 		try {
@@ -182,7 +181,7 @@ public class InterfazPuzzle extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * se generara un una interfaz para insertar un puzzle especifico
+	 * se generara un una interfaz para insertar un puzzle especifico.
 	 */
 	private void insertarPuzzle() {
 		try {
@@ -194,8 +193,8 @@ public class InterfazPuzzle extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * genera un puzzle insertado por pantalla y lo mostrara por pantalla
-	 * 
+	 * genera un puzzle insertado por pantalla y lo mostrara por pantalla.
+	 *
 	 * @param matriz
 	 *            matriz insertada por interfaz
 	 */
@@ -207,7 +206,7 @@ public class InterfazPuzzle extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * genera un puzzle ordenado al escoger un tamaño en el comoboBox
+	 * genera un puzzle ordenado al escoger un tamaño en el comoboBox.
 	 */
 	private void generarPuzzle() {
 		puzzle = null;
@@ -236,8 +235,8 @@ public class InterfazPuzzle extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * muestra el pantalla el puzzle
-	 * 
+	 * muestra el pantalla el puzzle.
+	 *
 	 * @param n
 	 *            tamaño del puzzle
 	 * @param matriz
@@ -327,7 +326,7 @@ public class InterfazPuzzle extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * muestra en pantalla el siguiente paso para llegar a solución
+	 * muestra en pantalla el siguiente paso para llegar a solución.
 	 */
 	private void siguientePaso() {
 		panelPuzzle.removeAll();
@@ -336,6 +335,12 @@ public class InterfazPuzzle extends JFrame implements ActionListener {
 		cicloGenerador(n, paso);
 	}
 
+	/*
+	 * (sin Javadoc)
+	 * 
+	 * @see
+	 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		String comando = arg0.getActionCommand();

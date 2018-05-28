@@ -9,41 +9,36 @@ import javax.swing.JOptionPane;
 
 import Arbol.Nodo;
 
+// TODO: Auto-generated Javadoc
 /**
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * $Id$ Universidad Minuto de Dios (Bogotá - Colombia) Departamento de
  * Ingeniería de Sistemas
- *
- * Ejercicio: Puzzle
  * 
+ * Ejercicio: Puzzle.
+ *
  * @author Alexis Holguin
  * @since Mayo 20, 2018
- * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 public class Puzzle2 {
 	// ------------------------------------------------------------------------------------
 	// Atributos
 	// ------------------------------------------------------------------------------------
 
-	/**
-	 * matriz que alberga el problema o puzzle desordenado
-	 */
+	/** matriz que alberga el problema o puzzle desordenado. */
 	private int[][] problema;
-	/**
-	 * pila para almacenar los pasos para llegar a la solución del puzzle
-	 */
+
+	/** pila para almacenar los pasos para llegar a la solución del puzzle. */
 	private Stack<Nodo> pasos;
-	/**
-	 * Matriz que alberga el puzzle al que se quiere llegar o la misma solución
-	 */
+
+	/** Matriz que alberga el puzzle al que se quiere llegar o la misma solución. */
 	private int[][] solucion;
-	/**
-	 * el numero de movimientos necesarios para llegar a una solución
-	 */
+
+	/** el numero de movimientos necesarios para llegar a una solución. */
 	private int movimientos;
-	/**
-	 * Tamaño de la matriz
-	 */
+
+	/** Tamaño de la matriz. */
 	private int n;
 
 	// ------------------------------------------------------------------------------------
@@ -52,8 +47,8 @@ public class Puzzle2 {
 
 	/**
 	 * constructor que generar un puzzle desordenado a partir de un tamaño
-	 * especificado
-	 * 
+	 * especificado.
+	 *
 	 * @param n
 	 *            tamaño del puzzle
 	 */
@@ -66,8 +61,8 @@ public class Puzzle2 {
 	}
 
 	/**
-	 * Constructor que generar un puzzle desordenado ingresado por el usuario
-	 * 
+	 * Constructor que generar un puzzle desordenado ingresado por el usuario.
+	 *
 	 * @param problem
 	 *            matriz ingresada por el usuario como puzzle
 	 * @param n
@@ -85,6 +80,8 @@ public class Puzzle2 {
 	// ------------------------------------------------------------------------------------
 
 	/**
+	 * Gets the movimientos.
+	 *
 	 * @return numero de movimientos necesarios para solucionar el puzzle
 	 */
 	public int getMovimientos() {
@@ -92,6 +89,8 @@ public class Puzzle2 {
 	}
 
 	/**
+	 * Gets the pasos.
+	 *
 	 * @return pasos necesarios para alcanzar la solución
 	 */
 	public Stack<Nodo> getPasos() {
@@ -99,6 +98,8 @@ public class Puzzle2 {
 	}
 
 	/**
+	 * Gets the problema.
+	 *
 	 * @return el puzzle desordenado
 	 */
 	public int[][] getProblema() {
@@ -106,6 +107,8 @@ public class Puzzle2 {
 	}
 
 	/**
+	 * Gets the solution.
+	 *
 	 * @return Puzzle ordenado
 	 */
 	public int[][] getSolution() {
@@ -116,15 +119,15 @@ public class Puzzle2 {
 	// Métodos
 	// ------------------------------------------------------------------------------------
 	/**
-	 * genera solución al puzzle
+	 * genera solución al puzzle.
 	 */
 	public void generarSolucion() {
 		generarSolucion(n);
 	}
 
 	/**
-	 * genera solución y carga los pasos necesarios para solucionar el puzzle
-	 * 
+	 * genera solución y carga los pasos necesarios para solucionar el puzzle.
+	 *
 	 * @param n
 	 *            tamaño del puzzle
 	 */
@@ -144,8 +147,8 @@ public class Puzzle2 {
 	}
 
 	/**
-	 * Encuentra el nodo solución del puzzle rrecorriendo el arbol de soluciones
-	 * 
+	 * Encuentra el nodo solución del puzzle rrecorriendo el arbol de soluciones.
+	 *
 	 * @param problem
 	 *            puzzle desordenado
 	 * @param solution
@@ -195,8 +198,8 @@ public class Puzzle2 {
 
 	/**
 	 * genera los hijos de un nodo especifico teniendo en cuenta las reglas del
-	 * puzzle
-	 * 
+	 * puzzle.
+	 *
 	 * @param revisar
 	 *            nodo al que se le quieren generar los hijos
 	 * @param n
@@ -254,8 +257,8 @@ public class Puzzle2 {
 	}
 
 	/**
-	 * obtiene el mínimo costo de un nodo en especifico
-	 * 
+	 * obtiene el mínimo costo de un nodo en especifico.
+	 *
 	 * @param x
 	 *            nodo al que se le quiere obtener el mínimo costo
 	 * @param n
@@ -269,8 +272,8 @@ public class Puzzle2 {
 	}
 
 	/**
-	 * Obtiene la distancia que hay de un nodo a la raíz del árbol
-	 * 
+	 * Obtiene la distancia que hay de un nodo a la raíz del árbol.
+	 *
 	 * @param x
 	 *            nodo al que se quiere buscar la distancia
 	 * @return la distancia del nodo x a la raíz del padre
@@ -287,8 +290,8 @@ public class Puzzle2 {
 
 	/**
 	 * Obtiene el numero de posiciones que no están en su posiciones correcta en un
-	 * nodo
-	 * 
+	 * nodo.
+	 *
 	 * @param x
 	 *            nodo a verificar
 	 * @param n
@@ -311,8 +314,8 @@ public class Puzzle2 {
 
 	/**
 	 * Obtiene la suma de las distancias desde la posición actual de cada ficha
-	 * hasta su posición original o correcta en un nodo
-	 * 
+	 * hasta su posición original o correcta en un nodo.
+	 *
 	 * @param x
 	 *            nodo a verificar
 	 * @param n
@@ -333,8 +336,8 @@ public class Puzzle2 {
 	}
 
 	/**
-	 * busca la posición de un numero en el puzzle ordenado o solución
-	 * 
+	 * busca la posición de un numero en el puzzle ordenado o solución.
+	 *
 	 * @param n
 	 *            numero a verificar
 	 * @return posición del numero n el el puzzle ordenado
@@ -353,8 +356,8 @@ public class Puzzle2 {
 	}
 
 	/**
-	 * Ubicar la posición del 0 en una matriz
-	 * 
+	 * Ubicar la posición del 0 en una matriz.
+	 *
 	 * @param matriz
 	 *            matriz a verificar
 	 * @return posición del número 0 en matriz
@@ -374,8 +377,8 @@ public class Puzzle2 {
 	}
 
 	/**
-	 * Genera un puzzle completamente solucionado a partir del tamaño del mismo
-	 * 
+	 * Genera un puzzle completamente solucionado a partir del tamaño del mismo.
+	 *
 	 * @param n
 	 *            Tamaño del puzzle
 	 * @return puzzle completamente ordenado o puzzle solución
@@ -399,8 +402,8 @@ public class Puzzle2 {
 	}
 
 	/**
-	 * genera un puzzle desordenado a partir del tamaño del mismo
-	 * 
+	 * genera un puzzle desordenado a partir del tamaño del mismo.
+	 *
 	 * @param n
 	 *            tamaño del puzzle
 	 * @return puzzle desordeando
@@ -452,10 +455,11 @@ public class Puzzle2 {
 	}
 
 	/**
-	 * Clona una matriz
-	 * 
+	 * Clona una matriz.
+	 *
 	 * @param matriz
-	 * @return
+	 *            the matriz
+	 * @return the int[][]
 	 */
 	private int[][] clone(int[][] matriz) {
 		int[][] clon = new int[matriz.length][matriz.length];
@@ -466,8 +470,8 @@ public class Puzzle2 {
 	}
 
 	/**
-	 * revisa si en una ArrayList ya existe un nodo especifico
-	 * 
+	 * revisa si en una ArrayList ya existe un nodo especifico.
+	 *
 	 * @param visitados
 	 *            ArrayList en donde se va a buscar
 	 * @param hijo
