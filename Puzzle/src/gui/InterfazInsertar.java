@@ -11,12 +11,42 @@ import javax.swing.JTextField;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
-
+/**
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * $Id$ 
+ * Universidad Minuto de Dios (Bogotá - Colombia) 
+ * Departamento de Ingeniería de Sistemas
+ * 
+ * clase para mostrar interfaz que permitirá insertar la matriz por pantalla al usuario
+ * 
+ * Ejercicio: Puzzle
+ * 
+ * @author Alexis Holguin
+ * @since Mayo 20, 2018
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
 public class InterfazInsertar extends JFrame implements ActionListener {
+	/**
+	 * comando para insertar matriz por pantalla
+	 */
 	private static final String INSERTAR = "insertar";
+	/**
+	 * Arraylist para almacenar los JtextFields creados
+	 */
 	private ArrayList<JTextField> textFields;
+	/**
+	 * tamaño del puzzle
+	 */
 	private int n;
+	/**
+	 * atributo que conecta con la Interfaz Principal
+	 */
 	private InterfazPuzzle principal;
+	/**
+	 * generar ventana de un determinado tamaño de JTextFields para mostrarlos por pantalla
+	 * @param n tamaño del puzzle
+	 * @param principal ventana principal del programa
+	 */
 	public InterfazInsertar(int n,InterfazPuzzle principal) {
 		this.principal = principal;
 		this.n = n;
@@ -39,7 +69,11 @@ public class InterfazInsertar extends JFrame implements ActionListener {
 			textFields.add(new JTextField());
 			panel_1.add(textFields.get(i));
 		}
-	}
+	}	
+	/**
+	 * generar una matriz a partir de los ingresado por pantalla
+	 * @return
+	 */
 	private int[][] Insertar() {
 		try {
 		int[][] array = new int[n][n];

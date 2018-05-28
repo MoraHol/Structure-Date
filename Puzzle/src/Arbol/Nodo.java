@@ -1,7 +1,20 @@
 package Arbol;
 
 import java.util.ArrayList;
-
+/**
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * $Id$ 
+ * Universidad Minuto de Dios (Bogotá - Colombia) 
+ * Departamento de Ingeniería de Sistemas
+ * 
+ * clase donde se maneja los atributos y métodos del Nodo en un arbol
+ * 
+ * Ejercicio: Puzzle
+ * 
+ * @author Alexis Holguin
+ * @since Mayo 20, 2018
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
 public class Nodo {
 	int [][] info;
 	private ArrayList<Nodo> hijos;

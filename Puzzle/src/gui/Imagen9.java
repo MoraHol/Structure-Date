@@ -5,11 +5,21 @@ import java.awt.Graphics;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-
+/**
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * $Id$ 
+ * Universidad Minuto de Dios (Bogotá - Colombia) 
+ * Departamento de Ingeniería de Sistemas
+ * 
+ * clase para mostrar imágenes de numeros
+ * 
+ * Ejercicio: Puzzle
+ * 
+ * @author Alexis Holguin
+ * @since Mayo 20, 2018
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
 public class Imagen9 extends JPanel {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 6309543999301963653L;
 	public Imagen9() {
 		setSize(200,200);

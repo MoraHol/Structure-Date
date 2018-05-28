@@ -5,11 +5,21 @@ import java.awt.Graphics;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-
+/**
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * $Id$ 
+ * Universidad Minuto de Dios (Bogotá - Colombia) 
+ * Departamento de Ingeniería de Sistemas
+ * 
+ * clase para mostrar imágenes de numeros
+ * 
+ * Ejercicio: Puzzle
+ * 
+ * @author Alexis Holguin
+ * @since Mayo 20, 2018
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
 public class ImagenVacio extends JPanel {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -2021757636536716161L;
 	public ImagenVacio() {
 		setSize(200,200);
